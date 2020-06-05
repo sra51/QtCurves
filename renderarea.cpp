@@ -2,6 +2,8 @@
 #include <QPaintEvent>
 #include <QPainter>
 
+//Test Commit
+
 RenderArea::RenderArea(QWidget *parent) :
     QWidget(parent),
     mBackGroundColor (0, 0, 255),
