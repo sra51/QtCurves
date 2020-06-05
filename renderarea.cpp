@@ -2,7 +2,7 @@
 #include <QPaintEvent>
 #include <QPainter>
 
-//Test Commit
+//Test Commit 2
 
 RenderArea::RenderArea(QWidget *parent) :
     QWidget(parent),
