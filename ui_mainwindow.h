@@ -11,9 +11,13 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include "renderarea.h"
 
@@ -23,7 +27,15 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
+    QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout;
     RenderArea *renderArea;
+    QVBoxLayout *verticalLayout;
+    QPushButton *btnAstroid;
+    QPushButton *btnCycloid;
+    QPushButton *btnHuygens;
+    QPushButton *btnHypo;
+    QSpacerItem *verticalSpacer;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -34,9 +46,46 @@ public:
         MainWindow->resize(800, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        renderArea = new RenderArea(centralwidget);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(40, 90, 661, 401));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        renderArea = new RenderArea(layoutWidget);
         renderArea->setObjectName(QString::fromUtf8("renderArea"));
-        renderArea->setGeometry(QRect(210, 110, 261, 271));
+
+        horizontalLayout->addWidget(renderArea);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        btnAstroid = new QPushButton(layoutWidget);
+        btnAstroid->setObjectName(QString::fromUtf8("btnAstroid"));
+
+        verticalLayout->addWidget(btnAstroid);
+
+        btnCycloid = new QPushButton(layoutWidget);
+        btnCycloid->setObjectName(QString::fromUtf8("btnCycloid"));
+
+        verticalLayout->addWidget(btnCycloid);
+
+        btnHuygens = new QPushButton(layoutWidget);
+        btnHuygens->setObjectName(QString::fromUtf8("btnHuygens"));
+
+        verticalLayout->addWidget(btnHuygens);
+
+        btnHypo = new QPushButton(layoutWidget);
+        btnHypo->setObjectName(QString::fromUtf8("btnHypo"));
+
+        verticalLayout->addWidget(btnHypo);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer);
+
+
+        horizontalLayout->addLayout(verticalLayout);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -54,6 +103,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        btnAstroid->setText(QCoreApplication::translate("MainWindow", "Astroid", nullptr));
+        btnCycloid->setText(QCoreApplication::translate("MainWindow", "Cycloid", nullptr));
+        btnHuygens->setText(QCoreApplication::translate("MainWindow", "Huygens", nullptr));
+        btnHypo->setText(QCoreApplication::translate("MainWindow", "Hypo Cycloid", nullptr));
     } // retranslateUi
 
 };
