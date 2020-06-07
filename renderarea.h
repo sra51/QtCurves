@@ -21,6 +21,15 @@ public:
     void setShape (ShapeType shape) { mShape = shape; on_shape_changed (); }
     ShapeType shape () const { return mShape; }
 
+    void setScale (float scale) { mScale = scale; repaint (); }
+    float scale () const { return mScale; }
+
+    void setInterval (float interval) { mIntervalLength = interval; repaint (); }
+    float interval () const { return mIntervalLength; }
+
+    void setStepCount (int count) { mStepCount = count; repaint (); }
+    int stepCount () const { return mStepCount; }
+
 protected:
     void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
 
@@ -34,7 +43,7 @@ private:
 
 private:
     void on_shape_changed ();
-    QPointF compute (float t);  // dispatch function based on mShape's type
+    QPointF compute (float t);  // dispatch function based on mShape's arg1type
     QPointF compute_astroid (float);
     QPointF compute_cycloid (float);
     QPointF compute_huygens (float);
