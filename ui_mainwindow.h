@@ -35,6 +35,7 @@ public:
     QPushButton *btnCycloid;
     QPushButton *btnHuygens;
     QPushButton *btnHypo;
+    QPushButton *btnLine;
     QSpacerItem *verticalSpacer;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -43,7 +44,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 600);
+        MainWindow->resize(800, 537);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         layoutWidget = new QWidget(centralwidget);
@@ -79,6 +80,11 @@ public:
 
         verticalLayout->addWidget(btnHypo);
 
+        btnLine = new QPushButton(layoutWidget);
+        btnLine->setObjectName(QString::fromUtf8("btnLine"));
+
+        verticalLayout->addWidget(btnLine);
+
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
@@ -107,6 +113,7 @@ public:
         btnCycloid->setText(QCoreApplication::translate("MainWindow", "Cycloid", nullptr));
         btnHuygens->setText(QCoreApplication::translate("MainWindow", "Huygens", nullptr));
         btnHypo->setText(QCoreApplication::translate("MainWindow", "Hypo Cycloid", nullptr));
+        btnLine->setText(QCoreApplication::translate("MainWindow", "Line", nullptr));
     } // retranslateUi
 
 };

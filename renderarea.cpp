@@ -32,16 +32,24 @@ void RenderArea::on_shape_changed ()
         mStepCount = 256;
         break;
     case Cycloid:
-
+        mScale = 4;
+        mIntervalLength = 6 * M_PI;
+        mStepCount = 128;
         break;
     case HuygensCycloid:
-
+        mScale = 4;
+        mIntervalLength = 4 * M_PI;
+        mStepCount = 256;
         break;
     case HypoCycloid:
-
+        mScale = 15;
+        mIntervalLength = 2 * M_PI;
+        mStepCount = 256;
         break;
-    case FutureCurve:
-
+    case Line:
+        mScale = 100;   //  line length in pixels
+        mIntervalLength = 1;    // not really needed
+        mStepCount = 128;
         break;
     default:
         break;
@@ -63,8 +71,8 @@ QPointF RenderArea::compute (float t)
     case HypoCycloid:
         return compute_hypo(t);
         break;
-    case FutureCurve:
-        return compute_futureCurve(t);
+    case Line:
+        return compute_line(t);
     default:
         break;
     }
@@ -82,22 +90,31 @@ QPointF RenderArea::compute_astroid (float t)
 
 QPointF RenderArea::compute_cycloid (float t)
 {
-    //  TBD
+    return QPointF (
+                1.5 * (1 - cos (t)),    // X
+                1.5 * (t - sin (t))     // Y
+    );
 }
 
 QPointF RenderArea::compute_huygens (float t)
 {
-    // TBD
+    return QPointF (
+                4 * (3 * cos (t) - cos (3 * t)),    // X
+                4 * (3 * sin (t) - sin (3 * t))     // Y
+    );
 }
 
 QPointF RenderArea::compute_hypo (float t)
 {
-    // TBD
+    return QPointF (
+                1.5 * (2 * cos (t) + cos (2 * t)),  // X
+                1.5 * (2 * sin (t) - sin (2 * t))   // Y
+    );
 }
 
-QPointF RenderArea::compute_futureCurve (float t)
+QPointF RenderArea::compute_line (float t)
 {
-    //  TBD
+    return QPointF (1 - t, 1 - t);
 }
 
 void RenderArea::paintEvent(QPaintEvent *event)
@@ -114,11 +131,10 @@ void RenderArea::paintEvent(QPaintEvent *event)
     painter.drawRect(this->rect());
 
     QPoint center = this->rect().center();
-
+    qDebug() << mShape;;
     float step = mIntervalLength / mStepCount;
     for (float t = 0; t < mIntervalLength; t += step) {
-        QPointF point = compute_astroid (t);
-//        qDebug() << point;
+        QPointF point = compute (t);
         QPoint pixel;
         pixel.setX(point.x() * mScale + center.x());
         pixel.setY(point.y() * mScale + center.y());

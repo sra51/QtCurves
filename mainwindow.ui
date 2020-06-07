@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>537</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -54,6 +54,13 @@
         <widget class="QPushButton" name="btnHypo">
          <property name="text">
           <string>Hypo Cycloid</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnLine">
+         <property name="text">
+          <string>Line</string>
          </property>
         </widget>
        </item>
