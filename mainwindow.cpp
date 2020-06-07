@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QColorDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -22,6 +23,8 @@ void MainWindow::update_ui()
     this->ui->spinScale->setValue(this->ui->renderArea->scale());
     this->ui->spinInterval->setValue(this->ui->renderArea->interval());
     this->ui->spinCount->setValue(this->ui->renderArea->stepCount());
+//    this->ui->renderArea->setShapeColor(this->ui->renderArea->shapeColor());
+//    this->ui->renderArea->setBackgroundColor(this->ui->renderArea->backroundColor());
 }
 
 void MainWindow::on_btnAstroid_clicked()
@@ -72,4 +75,24 @@ void MainWindow::on_spinInterval_valueChanged(double interval)
 void MainWindow::on_spinCount_valueChanged(int count)
 {
     this->ui->renderArea->setStepCount(count);
+}
+
+void MainWindow::on_btnBackground_clicked()
+{
+    // open color picker dialog and change the background color
+
+    QColor color = QColorDialog::getColor(ui->renderArea->backroundColor(), this, "Select Color");
+    ui->renderArea->setBackgroundColor(color);
+    this->ui->renderArea->repaint();
+    update_ui ();
+}
+
+void MainWindow::on_btnLineColor_clicked()
+{
+    // open color picker dialog and change the shape color
+
+    QColor color = QColorDialog::getColor(ui->renderArea->shapeColor(), this, "Select Color");
+    ui->renderArea->setShapeColor(color);
+    this->ui->renderArea->repaint();
+    update_ui ();
 }

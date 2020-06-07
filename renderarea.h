@@ -18,6 +18,9 @@ public:
     void setBackgroundColor (QColor color) { mBackGroundColor = color;} // setter
     QColor backroundColor () const { return mBackGroundColor; }  //getter
 
+    void setShapeColor (QColor color) { mShapeColor = color;}
+    QColor shapeColor () const { return mShapeColor; }
+
     void setShape (ShapeType shape) { mShape = shape; on_shape_changed (); }
     ShapeType shape () const { return mShape; }
 

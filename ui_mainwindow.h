@@ -12,11 +12,13 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDoubleSpinBox>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
@@ -29,15 +31,21 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    RenderArea *renderArea;
     QWidget *widget;
+    QGridLayout *gridLayout;
+    QVBoxLayout *verticalLayout_4;
+    RenderArea *renderArea;
+    QHBoxLayout *horizontalLayout_4;
+    QPushButton *btnBackground;
+    QPushButton *btnLineColor;
+    QSpacerItem *horizontalSpacer;
+    QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout;
     QPushButton *btnAstroid;
     QPushButton *btnCycloid;
     QPushButton *btnHypo;
     QPushButton *btnHuygens;
     QPushButton *btnLine;
-    QWidget *widget1;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
@@ -58,15 +66,45 @@ public:
         MainWindow->resize(800, 537);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        renderArea = new RenderArea(centralwidget);
-        renderArea->setObjectName(QString::fromUtf8("renderArea"));
-        renderArea->setGeometry(QRect(71, 90, 271, 241));
         widget = new QWidget(centralwidget);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(610, 91, 96, 141));
-        verticalLayout = new QVBoxLayout(widget);
+        widget->setGeometry(QRect(40, 90, 443, 243));
+        gridLayout = new QGridLayout(widget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        renderArea = new RenderArea(widget);
+        renderArea->setObjectName(QString::fromUtf8("renderArea"));
+
+        verticalLayout_4->addWidget(renderArea);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        btnBackground = new QPushButton(widget);
+        btnBackground->setObjectName(QString::fromUtf8("btnBackground"));
+
+        horizontalLayout_4->addWidget(btnBackground);
+
+        btnLineColor = new QPushButton(widget);
+        btnLineColor->setObjectName(QString::fromUtf8("btnLineColor"));
+
+        horizontalLayout_4->addWidget(btnLineColor);
+
+        horizontalSpacer = new QSpacerItem(88, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_4);
+
+
+        gridLayout->addLayout(verticalLayout_4, 0, 0, 1, 1);
+
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
         btnAstroid = new QPushButton(widget);
         btnAstroid->setObjectName(QString::fromUtf8("btnAstroid"));
 
@@ -92,21 +130,21 @@ public:
 
         verticalLayout->addWidget(btnLine);
 
-        widget1 = new QWidget(centralwidget);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(530, 260, 172, 92));
-        verticalLayout_2 = new QVBoxLayout(widget1);
+
+        verticalLayout_3->addLayout(verticalLayout);
+
+        verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label = new QLabel(widget1);
+        label = new QLabel(widget);
         label->setObjectName(QString::fromUtf8("label"));
 
         horizontalLayout->addWidget(label);
 
-        spinScale = new QDoubleSpinBox(widget1);
+        spinScale = new QDoubleSpinBox(widget);
         spinScale->setObjectName(QString::fromUtf8("spinScale"));
+        spinScale->setMaximumSize(QSize(60, 16777215));
         spinScale->setDecimals(1);
         spinScale->setSingleStep(0.100000000000000);
         spinScale->setValue(0.000000000000000);
@@ -118,13 +156,15 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        label_2 = new QLabel(widget1);
+        label_2 = new QLabel(widget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         horizontalLayout_3->addWidget(label_2);
 
-        spinCount = new QSpinBox(widget1);
+        spinCount = new QSpinBox(widget);
         spinCount->setObjectName(QString::fromUtf8("spinCount"));
+        spinCount->setMinimumSize(QSize(60, 0));
+        spinCount->setMaximumSize(QSize(60, 16777215));
         spinCount->setMaximum(512);
         spinCount->setSingleStep(1);
 
@@ -135,13 +175,14 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_3 = new QLabel(widget1);
+        label_3 = new QLabel(widget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
 
         horizontalLayout_2->addWidget(label_3);
 
-        spinInterval = new QDoubleSpinBox(widget1);
+        spinInterval = new QDoubleSpinBox(widget);
         spinInterval->setObjectName(QString::fromUtf8("spinInterval"));
+        spinInterval->setMaximumSize(QSize(60, 16777215));
         spinInterval->setDecimals(1);
         spinInterval->setMaximum(100.000000000000000);
 
@@ -149,6 +190,12 @@ public:
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
+
+
+        verticalLayout_3->addLayout(verticalLayout_2);
+
+
+        gridLayout->addLayout(verticalLayout_3, 0, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -167,6 +214,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        btnBackground->setText(QCoreApplication::translate("MainWindow", "Backround", nullptr));
+        btnLineColor->setText(QCoreApplication::translate("MainWindow", "Line Color", nullptr));
         btnAstroid->setText(QCoreApplication::translate("MainWindow", "Astroid", nullptr));
         btnCycloid->setText(QCoreApplication::translate("MainWindow", "Cycloid", nullptr));
         btnHypo->setText(QCoreApplication::translate("MainWindow", "Hypo Cycloid", nullptr));
