@@ -49,6 +49,8 @@ public:
     QPushButton *btnCircle;
     QPushButton *btnEllipse;
     QPushButton *btnFancy;
+    QPushButton *btnCloud1;
+    QPushButton *btnCloud2;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label;
     QDoubleSpinBox *spinScale;
@@ -65,7 +67,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(763, 491);
+        MainWindow->resize(626, 491);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         layoutWidget = new QWidget(centralwidget);
@@ -151,6 +153,16 @@ public:
 
         verticalLayout->addWidget(btnFancy);
 
+        btnCloud1 = new QPushButton(layoutWidget);
+        btnCloud1->setObjectName(QString::fromUtf8("btnCloud1"));
+
+        verticalLayout->addWidget(btnCloud1);
+
+        btnCloud2 = new QPushButton(layoutWidget);
+        btnCloud2->setObjectName(QString::fromUtf8("btnCloud2"));
+
+        verticalLayout->addWidget(btnCloud2);
+
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         label = new QLabel(layoutWidget);
@@ -217,7 +229,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 763, 20));
+        menubar->setGeometry(QRect(0, 0, 626, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -242,6 +254,8 @@ public:
         btnCircle->setText(QCoreApplication::translate("MainWindow", "Circle", nullptr));
         btnEllipse->setText(QCoreApplication::translate("MainWindow", "Ellipse", nullptr));
         btnFancy->setText(QCoreApplication::translate("MainWindow", "Fancy", nullptr));
+        btnCloud1->setText(QCoreApplication::translate("MainWindow", "Cloud 1", nullptr));
+        btnCloud2->setText(QCoreApplication::translate("MainWindow", "Cloud 2", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Scale", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Interval Length", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Step Count", nullptr));

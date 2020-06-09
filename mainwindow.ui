@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>763</width>
+    <width>626</width>
     <height>491</height>
    </rect>
   </property>
@@ -135,6 +135,20 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="btnCloud1">
+         <property name="text">
+          <string>Cloud 1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnCloud2">
+         <property name="text">
+          <string>Cloud 2</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QLabel" name="label">
@@ -246,7 +260,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>763</width>
+     <width>626</width>
      <height>20</height>
     </rect>
    </property>

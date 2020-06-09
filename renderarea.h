@@ -22,7 +22,9 @@ public:
                     Circle,
                     Ellipse,
                     Fancy,
-                    Starfish
+                    Starfish,
+                    Cloud1,
+                    Cloud2
                    };
 
     void setBackgroundColor (QColor color) { mBackGroundColor = color; repaint (); } // setter
@@ -62,6 +64,9 @@ private:
     QPointF compute_ellipse (float);
     QPointF compute_fancy (float);
     QPointF compute_starfish (float);
+    QPointF compute_cloud1 (float);
+    QPointF compute_cloud2 (float);
+    QPointF compute_cloud_with_sign (float t, float sign);
 
 private:
     QColor mBackGroundColor;
