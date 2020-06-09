@@ -15,6 +15,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private:
+    void update_ui ();
+
 private slots:
     void on_btnAstroid_clicked();
 
@@ -36,8 +39,9 @@ private slots:
 
     void on_btnLineColor_clicked();
 
-private:
-    void update_ui ();
+    void on_btnCircle_clicked();
+
+    void on_btnEllipse_clicked();
 
 private:
     Ui::MainWindow *ui;

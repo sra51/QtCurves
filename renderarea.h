@@ -13,15 +13,22 @@ public:
     QSize minimumSizeHint() const Q_DECL_OVERRIDE;
     QSize sizeHint() const Q_DECL_OVERRIDE;
 
-    enum ShapeType { Astroid, Cycloid, HuygensCycloid, HypoCycloid, Line  };
+    enum ShapeType {Astroid,
+                    Cycloid,
+                    HuygensCycloid,
+                    HypoCycloid,
+                    Line,
+                    Circle,
+                    Ellipse
+                   };
 
-    void setBackgroundColor (QColor color) { mBackGroundColor = color;} // setter
+    void setBackgroundColor (QColor color) { mBackGroundColor = color; repaint (); } // setter
     QColor backroundColor () const { return mBackGroundColor; }  //getter
 
-    void setShapeColor (QColor color) { mShapeColor = color;}
+    void setShapeColor (QColor color) { mShapeColor = color; repaint (); }
     QColor shapeColor () const { return mShapeColor; }
 
-    void setShape (ShapeType shape) { mShape = shape; on_shape_changed (); }
+    void setShape (ShapeType shape) { mShape = shape; on_shape_changed (); repaint(); }
     ShapeType shape () const { return mShape; }
 
     void setScale (float scale) { mScale = scale; repaint (); }
@@ -52,6 +59,8 @@ private:
     QPointF compute_huygens (float);
     QPointF compute_hypo (float);
     QPointF compute_line (float);
+    QPointF compute_circle (float);
+    QPointF compute_ellipse (float);
 
 signals:
 

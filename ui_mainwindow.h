@@ -31,29 +31,29 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout;
-    QVBoxLayout *verticalLayout_4;
+    QVBoxLayout *verticalLayout_2;
     RenderArea *renderArea;
     QHBoxLayout *horizontalLayout_4;
     QPushButton *btnBackground;
     QPushButton *btnLineColor;
     QSpacerItem *horizontalSpacer;
-    QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout;
     QPushButton *btnAstroid;
     QPushButton *btnCycloid;
     QPushButton *btnHypo;
     QPushButton *btnHuygens;
     QPushButton *btnLine;
-    QVBoxLayout *verticalLayout_2;
-    QHBoxLayout *horizontalLayout;
+    QPushButton *btnCircle;
+    QPushButton *btnEllipse;
+    QHBoxLayout *horizontalLayout_3;
     QLabel *label;
     QDoubleSpinBox *spinScale;
-    QHBoxLayout *horizontalLayout_3;
+    QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QSpinBox *spinCount;
-    QHBoxLayout *horizontalLayout_2;
+    QHBoxLayout *horizontalLayout;
     QLabel *label_3;
     QDoubleSpinBox *spinInterval;
     QMenuBar *menubar;
@@ -63,30 +63,31 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 537);
+        MainWindow->resize(640, 491);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(40, 90, 443, 243));
-        gridLayout = new QGridLayout(widget);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(20, 10, 579, 435));
+        gridLayout = new QGridLayout(layoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        verticalLayout_4 = new QVBoxLayout();
-        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        renderArea = new RenderArea(widget);
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        renderArea = new RenderArea(layoutWidget);
         renderArea->setObjectName(QString::fromUtf8("renderArea"));
+        renderArea->setMinimumSize(QSize(400, 400));
 
-        verticalLayout_4->addWidget(renderArea);
+        verticalLayout_2->addWidget(renderArea);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        btnBackground = new QPushButton(widget);
+        btnBackground = new QPushButton(layoutWidget);
         btnBackground->setObjectName(QString::fromUtf8("btnBackground"));
 
         horizontalLayout_4->addWidget(btnBackground);
 
-        btnLineColor = new QPushButton(widget);
+        btnLineColor = new QPushButton(layoutWidget);
         btnLineColor->setObjectName(QString::fromUtf8("btnLineColor"));
 
         horizontalLayout_4->addWidget(btnLineColor);
@@ -96,111 +97,115 @@ public:
         horizontalLayout_4->addItem(horizontalSpacer);
 
 
-        verticalLayout_4->addLayout(horizontalLayout_4);
+        verticalLayout_2->addLayout(horizontalLayout_4);
 
 
-        gridLayout->addLayout(verticalLayout_4, 0, 0, 1, 1);
+        gridLayout->addLayout(verticalLayout_2, 0, 0, 1, 1);
 
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        btnAstroid = new QPushButton(widget);
+        btnAstroid = new QPushButton(layoutWidget);
         btnAstroid->setObjectName(QString::fromUtf8("btnAstroid"));
 
         verticalLayout->addWidget(btnAstroid);
 
-        btnCycloid = new QPushButton(widget);
+        btnCycloid = new QPushButton(layoutWidget);
         btnCycloid->setObjectName(QString::fromUtf8("btnCycloid"));
 
         verticalLayout->addWidget(btnCycloid);
 
-        btnHypo = new QPushButton(widget);
+        btnHypo = new QPushButton(layoutWidget);
         btnHypo->setObjectName(QString::fromUtf8("btnHypo"));
 
         verticalLayout->addWidget(btnHypo);
 
-        btnHuygens = new QPushButton(widget);
+        btnHuygens = new QPushButton(layoutWidget);
         btnHuygens->setObjectName(QString::fromUtf8("btnHuygens"));
 
         verticalLayout->addWidget(btnHuygens);
 
-        btnLine = new QPushButton(widget);
+        btnLine = new QPushButton(layoutWidget);
         btnLine->setObjectName(QString::fromUtf8("btnLine"));
 
         verticalLayout->addWidget(btnLine);
 
+        btnCircle = new QPushButton(layoutWidget);
+        btnCircle->setObjectName(QString::fromUtf8("btnCircle"));
 
-        verticalLayout_3->addLayout(verticalLayout);
+        verticalLayout->addWidget(btnCircle);
 
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label = new QLabel(widget);
-        label->setObjectName(QString::fromUtf8("label"));
+        btnEllipse = new QPushButton(layoutWidget);
+        btnEllipse->setObjectName(QString::fromUtf8("btnEllipse"));
 
-        horizontalLayout->addWidget(label);
-
-        spinScale = new QDoubleSpinBox(widget);
-        spinScale->setObjectName(QString::fromUtf8("spinScale"));
-        spinScale->setMaximumSize(QSize(60, 16777215));
-        spinScale->setDecimals(1);
-        spinScale->setSingleStep(0.100000000000000);
-        spinScale->setValue(0.000000000000000);
-
-        horizontalLayout->addWidget(spinScale);
-
-
-        verticalLayout_2->addLayout(horizontalLayout);
+        verticalLayout->addWidget(btnEllipse);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        label_2 = new QLabel(widget);
+        label = new QLabel(layoutWidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        horizontalLayout_3->addWidget(label);
+
+        spinScale = new QDoubleSpinBox(layoutWidget);
+        spinScale->setObjectName(QString::fromUtf8("spinScale"));
+        spinScale->setMaximumSize(QSize(60, 16777215));
+        spinScale->setDecimals(1);
+        spinScale->setMaximum(150.000000000000000);
+        spinScale->setSingleStep(0.100000000000000);
+        spinScale->setValue(0.000000000000000);
+
+        horizontalLayout_3->addWidget(spinScale);
+
+
+        verticalLayout->addLayout(horizontalLayout_3);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        horizontalLayout_3->addWidget(label_2);
+        horizontalLayout_2->addWidget(label_2);
 
-        spinCount = new QSpinBox(widget);
+        spinCount = new QSpinBox(layoutWidget);
         spinCount->setObjectName(QString::fromUtf8("spinCount"));
         spinCount->setMinimumSize(QSize(60, 0));
         spinCount->setMaximumSize(QSize(60, 16777215));
         spinCount->setMaximum(512);
         spinCount->setSingleStep(1);
 
-        horizontalLayout_3->addWidget(spinCount);
+        horizontalLayout_2->addWidget(spinCount);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_3);
+        verticalLayout->addLayout(horizontalLayout_2);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_3 = new QLabel(widget);
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        horizontalLayout_2->addWidget(label_3);
+        horizontalLayout->addWidget(label_3);
 
-        spinInterval = new QDoubleSpinBox(widget);
+        spinInterval = new QDoubleSpinBox(layoutWidget);
         spinInterval->setObjectName(QString::fromUtf8("spinInterval"));
         spinInterval->setMaximumSize(QSize(60, 16777215));
         spinInterval->setDecimals(1);
         spinInterval->setMaximum(100.000000000000000);
 
-        horizontalLayout_2->addWidget(spinInterval);
+        horizontalLayout->addWidget(spinInterval);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_2);
+        verticalLayout->addLayout(horizontalLayout);
 
 
-        verticalLayout_3->addLayout(verticalLayout_2);
-
-
-        gridLayout->addLayout(verticalLayout_3, 0, 1, 1, 1);
+        gridLayout->addLayout(verticalLayout, 0, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 20));
+        menubar->setGeometry(QRect(0, 0, 640, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -221,6 +226,8 @@ public:
         btnHypo->setText(QCoreApplication::translate("MainWindow", "Hypo Cycloid", nullptr));
         btnHuygens->setText(QCoreApplication::translate("MainWindow", "Huygens", nullptr));
         btnLine->setText(QCoreApplication::translate("MainWindow", "Line", nullptr));
+        btnCircle->setText(QCoreApplication::translate("MainWindow", "Circle", nullptr));
+        btnEllipse->setText(QCoreApplication::translate("MainWindow", "Ellipse", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Scale", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Interval Length", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Step Count", nullptr));

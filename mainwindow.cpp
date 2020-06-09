@@ -2,15 +2,13 @@
 #include "ui_mainwindow.h"
 #include <QColorDialog>
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    this->ui->spinScale->setValue(this->ui->renderArea->scale());
-    this->ui->spinInterval->setValue(this->ui->renderArea->interval());
-    this->ui->spinCount->setValue(this->ui->renderArea->stepCount());
+    update_ui();
 }
 
 MainWindow::~MainWindow()
@@ -23,8 +21,6 @@ void MainWindow::update_ui()
     this->ui->spinScale->setValue(this->ui->renderArea->scale());
     this->ui->spinInterval->setValue(this->ui->renderArea->interval());
     this->ui->spinCount->setValue(this->ui->renderArea->stepCount());
-//    this->ui->renderArea->setShapeColor(this->ui->renderArea->shapeColor());
-//    this->ui->renderArea->setBackgroundColor(this->ui->renderArea->backroundColor());
 }
 
 void MainWindow::on_btnAstroid_clicked()
@@ -62,6 +58,20 @@ void MainWindow::on_btnLine_clicked()
     update_ui ();
 }
 
+void MainWindow::on_btnCircle_clicked()
+{
+    this->ui->renderArea->setShape(RenderArea::Circle);
+    this->ui->renderArea->repaint();
+    update_ui();
+}
+
+void MainWindow::on_btnEllipse_clicked()
+{
+    this->ui->renderArea->setShape(RenderArea::Ellipse);
+    this->ui->renderArea->repaint();
+    update_ui();
+}
+
 void MainWindow::on_spinScale_valueChanged(double scale)
 {
     this->ui->renderArea->setScale(scale);
@@ -83,8 +93,6 @@ void MainWindow::on_btnBackground_clicked()
 
     QColor color = QColorDialog::getColor(ui->renderArea->backroundColor(), this, "Select Color");
     ui->renderArea->setBackgroundColor(color);
-    this->ui->renderArea->repaint();
-    update_ui ();
 }
 
 void MainWindow::on_btnLineColor_clicked()
@@ -93,6 +101,4 @@ void MainWindow::on_btnLineColor_clicked()
 
     QColor color = QColorDialog::getColor(ui->renderArea->shapeColor(), this, "Select Color");
     ui->renderArea->setShapeColor(color);
-    this->ui->renderArea->repaint();
-    update_ui ();
 }
