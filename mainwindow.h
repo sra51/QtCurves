@@ -45,6 +45,8 @@ private slots:
 
     void on_btnFancy_clicked();
 
+    void on_btnStarfish_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

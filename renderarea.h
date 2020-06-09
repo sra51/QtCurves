@@ -20,7 +20,8 @@ public:
                     Line,
                     Circle,
                     Ellipse,
-                    Fancy
+                    Fancy,
+                    Starfish
                    };
 
     void setBackgroundColor (QColor color) { mBackGroundColor = color; repaint (); } // setter
@@ -63,6 +64,7 @@ private:
     QPointF compute_circle (float);
     QPointF compute_ellipse (float);
     QPointF compute_fancy (float);
+    QPointF compute_starfish (float);
 
 signals:
 

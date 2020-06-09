@@ -107,6 +107,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="btnStarfish">
+         <property name="text">
+          <string>Starfish</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="btnCircle">
          <property name="text">
           <string>Circle</string>

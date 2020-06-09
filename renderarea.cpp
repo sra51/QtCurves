@@ -31,21 +31,25 @@ void RenderArea::on_shape_changed ()
         mIntervalLength = 2 * M_PI;
         mStepCount = 256;
         break;
+
     case Cycloid:
         mScale = 10;
         mIntervalLength = 4 * M_PI;
         mStepCount = 128;
         break;
+
     case HuygensCycloid:
         mScale = 4;
         mIntervalLength = 4 * M_PI;
         mStepCount = 256;
         break;
+
     case HypoCycloid:
         mScale = 40;
         mIntervalLength = 2 * M_PI;
         mStepCount = 256;
         break;
+
     case Line:
         mScale = 100;   //  line length in pixels
         mIntervalLength = 2;    // not really needed
@@ -57,15 +61,23 @@ void RenderArea::on_shape_changed ()
         mIntervalLength = 2 * M_PI;
         mStepCount = 128;
         break;
+
     case Ellipse:
         mScale = 75;
         mIntervalLength = 2 * M_PI;
         mStepCount = 256;
         break;
+
     case Fancy:
         mScale = 10;
         mIntervalLength = 12 * M_PI;
         mStepCount = 512;
+        break;
+
+    case Starfish:
+        mScale = 25;
+        mIntervalLength = 6 * M_PI;
+        mStepCount = 256;
         break;
 
     default:
@@ -79,27 +91,37 @@ QPointF RenderArea::compute (float t)
     case Astroid:
         return compute_astroid(t);
         break;
+
     case Cycloid:
         return compute_cycloid(t);
         break;
+
     case HuygensCycloid:
         return compute_huygens(t);
         break;
+
     case HypoCycloid:
         return compute_hypo(t);
         break;
+
     case Line:
         return compute_line(t);
 
     case Circle:
         return compute_circle(t);
         break;
+
     case Ellipse:
         return compute_ellipse(t);
         break;
     case Fancy:
         return compute_fancy(t);
         break;
+
+    case Starfish:
+        return compute_starfish(t);
+        break;
+
     default:
         break;
     }
@@ -166,6 +188,17 @@ QPointF RenderArea::compute_fancy (float t)
     return QPointF (x, y);
 }
 
+QPointF RenderArea::compute_starfish (float t)
+{
+    float R = 5;
+    float r = 3;
+    float d = 5;
+
+    float x = (R - r) * cos (t) + d * cos (t * (R - r) / r);
+    float y = (R - r) * sin (t) - d * sin (t * (R - r) / r);
+    return QPointF (x, y);
+}
+
 void RenderArea::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
@@ -198,4 +231,11 @@ void RenderArea::paintEvent(QPaintEvent *event)
 
         prevPixel = pixel;
     }
+
+    QPointF point = compute (mIntervalLength);
+    QPoint pixel;
+    pixel.setX(point.x() * mScale + center.x());
+    pixel.setY(point.y() * mScale + center.y());
+    painter.drawLine(pixel, prevPixel);
+
 }

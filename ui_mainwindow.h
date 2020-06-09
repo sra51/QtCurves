@@ -45,6 +45,7 @@ public:
     QPushButton *btnHypo;
     QPushButton *btnHuygens;
     QPushButton *btnLine;
+    QPushButton *btnStarfish;
     QPushButton *btnCircle;
     QPushButton *btnEllipse;
     QPushButton *btnFancy;
@@ -129,6 +130,11 @@ public:
         btnLine->setObjectName(QString::fromUtf8("btnLine"));
 
         verticalLayout->addWidget(btnLine);
+
+        btnStarfish = new QPushButton(layoutWidget);
+        btnStarfish->setObjectName(QString::fromUtf8("btnStarfish"));
+
+        verticalLayout->addWidget(btnStarfish);
 
         btnCircle = new QPushButton(layoutWidget);
         btnCircle->setObjectName(QString::fromUtf8("btnCircle"));
@@ -232,6 +238,7 @@ public:
         btnHypo->setText(QCoreApplication::translate("MainWindow", "Hypo Cycloid", nullptr));
         btnHuygens->setText(QCoreApplication::translate("MainWindow", "Huygens", nullptr));
         btnLine->setText(QCoreApplication::translate("MainWindow", "Line", nullptr));
+        btnStarfish->setText(QCoreApplication::translate("MainWindow", "Starfish", nullptr));
         btnCircle->setText(QCoreApplication::translate("MainWindow", "Circle", nullptr));
         btnEllipse->setText(QCoreApplication::translate("MainWindow", "Ellipse", nullptr));
         btnFancy->setText(QCoreApplication::translate("MainWindow", "Fancy", nullptr));
