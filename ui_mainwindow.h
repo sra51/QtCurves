@@ -47,15 +47,16 @@ public:
     QPushButton *btnLine;
     QPushButton *btnCircle;
     QPushButton *btnEllipse;
+    QPushButton *btnFancy;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label;
     QDoubleSpinBox *spinScale;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *label_2;
-    QSpinBox *spinCount;
     QHBoxLayout *horizontalLayout;
     QLabel *label_3;
     QDoubleSpinBox *spinInterval;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_2;
+    QSpinBox *spinCount;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -63,7 +64,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(640, 491);
+        MainWindow->resize(763, 491);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         layoutWidget = new QWidget(centralwidget);
@@ -139,6 +140,11 @@ public:
 
         verticalLayout->addWidget(btnEllipse);
 
+        btnFancy = new QPushButton(layoutWidget);
+        btnFancy->setObjectName(QString::fromUtf8("btnFancy"));
+
+        verticalLayout->addWidget(btnFancy);
+
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         label = new QLabel(layoutWidget);
@@ -160,6 +166,25 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        label_3 = new QLabel(layoutWidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        horizontalLayout->addWidget(label_3);
+
+        spinInterval = new QDoubleSpinBox(layoutWidget);
+        spinInterval->setObjectName(QString::fromUtf8("spinInterval"));
+        spinInterval->setMaximumSize(QSize(60, 16777215));
+        spinInterval->setDecimals(1);
+        spinInterval->setMaximum(100.000000000000000);
+
+        horizontalLayout->addWidget(spinInterval);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         label_2 = new QLabel(layoutWidget);
@@ -180,32 +205,13 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label_3 = new QLabel(layoutWidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        horizontalLayout->addWidget(label_3);
-
-        spinInterval = new QDoubleSpinBox(layoutWidget);
-        spinInterval->setObjectName(QString::fromUtf8("spinInterval"));
-        spinInterval->setMaximumSize(QSize(60, 16777215));
-        spinInterval->setDecimals(1);
-        spinInterval->setMaximum(100.000000000000000);
-
-        horizontalLayout->addWidget(spinInterval);
-
-
-        verticalLayout->addLayout(horizontalLayout);
-
 
         gridLayout->addLayout(verticalLayout, 0, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 640, 20));
+        menubar->setGeometry(QRect(0, 0, 763, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -228,9 +234,10 @@ public:
         btnLine->setText(QCoreApplication::translate("MainWindow", "Line", nullptr));
         btnCircle->setText(QCoreApplication::translate("MainWindow", "Circle", nullptr));
         btnEllipse->setText(QCoreApplication::translate("MainWindow", "Ellipse", nullptr));
+        btnFancy->setText(QCoreApplication::translate("MainWindow", "Fancy", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Scale", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "Interval Length", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "Step Count", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Interval Length", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Step Count", nullptr));
     } // retranslateUi
 
 };

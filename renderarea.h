@@ -19,7 +19,8 @@ public:
                     HypoCycloid,
                     Line,
                     Circle,
-                    Ellipse
+                    Ellipse,
+                    Fancy
                    };
 
     void setBackgroundColor (QColor color) { mBackGroundColor = color; repaint (); } // setter
@@ -61,6 +62,7 @@ private:
     QPointF compute_line (float);
     QPointF compute_circle (float);
     QPointF compute_ellipse (float);
+    QPointF compute_fancy (float);
 
 signals:
 
