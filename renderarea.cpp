@@ -7,9 +7,10 @@
 RenderArea::RenderArea(QWidget *parent) :
     QWidget(parent),
     mBackGroundColor (0, 0, 255),
-    mShapeColor (255, 255, 255),
-    mShape (Astroid)
+    mShape (Astroid),
+    mPen (Qt::white)
 {
+    mPen.setWidth(2);
     on_shape_changed ();
 }
 
@@ -207,7 +208,7 @@ void RenderArea::paintEvent(QPaintEvent *event)
     painter.setRenderHint(QPainter::Antialiasing, true);
 
     painter.setBrush(mBackGroundColor);
-    painter.setPen(mShapeColor);
+    painter.setPen(mPen);
 
     // draw area
     painter.drawRect(this->rect());

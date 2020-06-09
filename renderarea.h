@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QColor>
+#include <QPen>
 
 class RenderArea : public QWidget
 {
@@ -27,8 +28,8 @@ public:
     void setBackgroundColor (QColor color) { mBackGroundColor = color; repaint (); } // setter
     QColor backroundColor () const { return mBackGroundColor; }  //getter
 
-    void setShapeColor (QColor color) { mShapeColor = color; repaint (); }
-    QColor shapeColor () const { return mShapeColor; }
+    void setShapeColor (QColor color) { mPen.setColor(color); repaint(); }
+    QColor shapeColor () const { return mPen.color(); }
 
     void setShape (ShapeType shape) { mShape = shape; on_shape_changed (); repaint(); }
     ShapeType shape () const { return mShape; }
@@ -45,13 +46,9 @@ public:
 protected:
     void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
 
-private:
-    QColor mBackGroundColor;
-    QColor mShapeColor;
-    ShapeType mShape;
-    float mIntervalLength;
-    float mScale;
-    int mStepCount;
+signals:
+
+public slots:
 
 private:
     void on_shape_changed ();
@@ -66,9 +63,14 @@ private:
     QPointF compute_fancy (float);
     QPointF compute_starfish (float);
 
-signals:
+private:
+    QColor mBackGroundColor;
+    ShapeType mShape;
+    QPen mPen;
 
-public slots:
+    float mIntervalLength;
+    float mScale;
+    int mStepCount;
 };
 
 #endif // RENDERAREA_H
