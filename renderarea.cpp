@@ -3,6 +3,7 @@
 #include <QPainter>
 #include <QDebug>
 #include <iostream>
+#include <math.h>
 
 RenderArea::RenderArea(QWidget *parent) :
     QWidget(parent),
